@@ -12,7 +12,7 @@ namespace ProjectMap.WebApi.Repositories
         {
             this.sqlConnectionString = sqlConnectionString;
         }
-
+        
         public async Task<Environment2D> InsertAsync(Environment2D environment2D)
         {
             using (var sqlConnection = new SqlConnection(sqlConnectionString))

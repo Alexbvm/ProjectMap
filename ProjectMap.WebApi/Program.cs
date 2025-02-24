@@ -11,7 +11,8 @@ builder.Services.AddOpenApi();
 
 builder.Services.Configure<RouteOptions>(o => o.LowercaseUrls = true);
 
-var sqlConnectionString = builder.Configuration["SqlConnectionString"];
+var sqlConnectionString = builder.Configuration.GetValue<string>("SqlConnectionString");
+var sqlConnectionStringFound = !string.IsNullOrWhiteSpace(sqlConnectionString);
 
 if (string.IsNullOrWhiteSpace(sqlConnectionString))
     throw new InvalidProgramException("Configuration variable SqlConnectionString not found");
@@ -20,6 +21,8 @@ builder.Services.AddTransient<IEnvironment2DRepository, Environment2DRepository>
 builder.Services.AddTransient<IObject2DRepository, Object2DRepository>(o => new Object2DRepository(sqlConnectionString));
 
 var app = builder.Build();
+
+app.MapGet("/", () => $"The API is up . Connection string found: {(sqlConnectionStringFound ? "" : "")}");
 
 // Configure the HTTP request pipeline.|
 app.MapOpenApi();
