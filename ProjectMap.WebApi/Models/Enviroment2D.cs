@@ -11,4 +11,6 @@ public class Environment2D
     public int MaxHeight { get; set; }
 
     public int MaxLength { get; set; }
+
+    public string? UserId { get; set; }
 }

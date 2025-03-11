@@ -49,6 +49,7 @@ public class Environment2DController : ControllerBase
     [Authorize]
     public async Task<ActionResult> Add(Environment2D environment2D)
     {
+        environment2D.UserId = _authenticationService.GetCurrentAuthenticatedUserId();
         environment2D.Id = Guid.NewGuid();
 
         var createdEnvironment2D = await _environment2DRepository.InsertAsync(environment2D);
