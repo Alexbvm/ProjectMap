@@ -42,11 +42,11 @@ app.MapGet("/", () => $"The API is up . Connection string found: {(sqlConnection
 app.MapOpenApi();
 
 app.UseHttpsRedirection();
-if(app.Environment.IsDevelopment())
-{
+//if(app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 app.UseAuthorization();
 
