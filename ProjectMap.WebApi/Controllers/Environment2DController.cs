@@ -28,6 +28,8 @@ public class Environment2DController : ControllerBase
     [Authorize]
     public async Task<ActionResult<IEnumerable<Environment2D>>> Get()
     {
+        return Ok("yess");
+
         var userId = _authenticationService.GetCurrentAuthenticatedUserId();
 
         var environment2Ds = await _environment2DRepository.ReadAsync(userId);
