@@ -13,11 +13,13 @@ namespace ProjectMap.WebApi.Controllers;
 [Authorize]
 public class Environment2DController : ControllerBase
 {
+    private readonly IAuthenticationService _authenticationService;
     private readonly IEnvironment2DRepository _environment2DRepository;
     private readonly ILogger<Environment2DController> _logger;
 
-    public Environment2DController(IEnvironment2DRepository environment2DRepository, ILogger<Environment2DController> logger)
+    public Environment2DController(IAuthenticationService authenticationService, IEnvironment2DRepository environment2DRepository, ILogger<Environment2DController> logger)
     {
+        _authenticationService = authenticationService;
         _environment2DRepository = environment2DRepository;
         _logger = logger;
     }
@@ -26,7 +28,9 @@ public class Environment2DController : ControllerBase
     [Authorize]
     public async Task<ActionResult<IEnumerable<Environment2D>>> Get()
     {
-        var environment2Ds = await _environment2DRepository.ReadAsync();
+        var userId = _authenticationService.GetCurrentAuthenticatedUserId();
+
+        var environment2Ds = await _environment2DRepository.ReadAsync(userId);
         return Ok(environment2Ds);
     }
 

@@ -6,7 +6,7 @@ namespace ProjectMap.WebApi.Repositories
     {
         Task DeleteAsync(Guid id);
         Task<Environment2D> InsertAsync(Environment2D environment2D);
-        Task<IEnumerable<Environment2D>> ReadAsync();
+        Task<IEnumerable<Environment2D>> ReadAsync(string userId);
         Task<Environment2D?> ReadAsync(Guid id);
         Task UpdateAsync(Environment2D environment);
     }

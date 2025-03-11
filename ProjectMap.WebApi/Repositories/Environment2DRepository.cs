@@ -30,11 +30,11 @@ namespace ProjectMap.WebApi.Repositories
             }
         }
 
-        public async Task<IEnumerable<Environment2D>> ReadAsync()
+        public async Task<IEnumerable<Environment2D>> ReadAsync(string id)
         {
             using (var sqlConnection = new SqlConnection(sqlConnectionString))
             {
-                return await sqlConnection.QueryAsync<Environment2D>("SELECT * FROM [Environment2D]");
+                return await sqlConnection.QueryAsync<Environment2D>("SELECT * FROM [Environment2D] WHERE UserId = @Id");
             }
         }
         public async Task UpdateAsync(Environment2D environment)
