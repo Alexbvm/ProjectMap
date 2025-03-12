@@ -71,7 +71,7 @@ public class Environment2DController : ControllerBase
 
     [HttpDelete("{environment2DId}", Name = "Delete2DEnvironmentByGuid")]
     [Authorize]
-    public async Task<IActionResult> Update(Guid environment2DId)
+    public async Task<IActionResult> Delete(Guid environment2DId)
     {
         var existingEnvironment2D = await _environment2DRepository.ReadAsync(environment2DId);
 

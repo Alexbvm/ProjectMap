@@ -13,11 +13,11 @@ namespace ProjectMap.WebApi.Repositories
             this.sqlConnectionString = sqlConnectionString;
         }
 
-        public async Task<Object2D> InsertAsync(Object2D object2D)
+        public async Task<Object2D> InsertAsync(Object2D object2D, string environmentID)
         {
             using (var sqlConnection = new SqlConnection(sqlConnectionString))
             {
-                var environmentId = await sqlConnection.ExecuteAsync("INSERT INTO [Object2D] (Id, PrefabId, PositionX, PositionY, ScaleX, ScaleY, RotationZ, SortingLayer) VALUES (@Id, @PrefabId, @PositionX, @PositionY, ScaleX, ScaleY, RotationZ, SortingLayer)", object2D);
+                var environmentId = await sqlConnection.ExecuteAsync("INSERT INTO [Object2D] (Id, PrefabId, PositionX, PositionY, ScaleX, ScaleY, RotationZ, SortingLayer, EnvironmentId) VALUES (@Id, @PrefabId, @PositionX, @PositionY, @ScaleX, @ScaleY, @RotationZ, @SortingLayer, @EnvironmentId)", object2D);
                 return object2D;
             }
         }
