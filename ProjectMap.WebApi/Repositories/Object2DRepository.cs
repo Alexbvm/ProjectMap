@@ -4,7 +4,7 @@ using ProjectMap.WebApi.Models;
 
 namespace ProjectMap.WebApi.Repositories
 {
-    public class Object2DRepository : IObject2DRepository
+    public class Object2DRepository
     {
         private readonly string sqlConnectionString;
 
