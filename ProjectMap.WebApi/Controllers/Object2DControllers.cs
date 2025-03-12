@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjectMap.WebApi.Models;
 using ProjectMap.WebApi.Repositories;
+using System.Diagnostics;
 namespace ProjectMap.WebApi.Controllers
 {
     [ApiController]
@@ -19,9 +20,10 @@ namespace ProjectMap.WebApi.Controllers
         [HttpPost("{environmentID}", Name = "CreateObject2D")]
         public async Task<ActionResult> Add(Object2D object2D)
         {
-            Object2D newobject = new Object2D();
+            //Object2D newobject = new Object2D();
 
-            newobject.Id = Guid.NewGuid();
+            object2D.Id = Guid.NewGuid();
+            
 
             var createdObject2D = await _object2DRepository.InsertAsync(object2D);
             return Created();
