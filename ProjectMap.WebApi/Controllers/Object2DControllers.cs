@@ -28,8 +28,8 @@ namespace ProjectMap.WebApi.Controllers
             var createdObject2D = await _object2DRepository.InsertAsync(object2D);
             return Created();
         }
-
-        [HttpGet(Name = "Read2DObjects")]
+            
+        [HttpGet("{environmentID}", Name = "Read2DObjects")]
         public async Task<ActionResult<IEnumerable<Object2D>>> Get(Guid environmentID)
         {
             var object2Ds = await _object2DRepository.ReadAsync(environmentID);
