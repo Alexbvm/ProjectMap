@@ -52,6 +52,15 @@ public class Environment2DController : ControllerBase
         environment2D.UserId = _authenticationService.GetCurrentAuthenticatedUserId();
         environment2D.Id = Guid.NewGuid();
 
+        //zelf gemaakt
+        var userId = _authenticationService.GetCurrentAuthenticatedUserId();
+        var environmentList = await _environment2DRepository.ReadAsync(userId);
+        if(environmentList.Count() >= 5)
+        {
+            return BadRequest("Can not have more than 5 worlds");
+        }
+
+
         var createdEnvironment2D = await _environment2DRepository.InsertAsync(environment2D);
         return Created();
     }
