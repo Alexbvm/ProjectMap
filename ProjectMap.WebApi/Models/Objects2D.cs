@@ -17,7 +17,7 @@
         public float RotationZ { get; set; }
 
         public int SortingLayer { get; set; }
-        public string EnvironmentId { get; set; }
+        public Guid EnvironmentId { get; set; }
     }
 
     public class Object2DDTO

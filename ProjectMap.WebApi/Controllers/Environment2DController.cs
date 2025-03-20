@@ -45,7 +45,7 @@ public class Environment2DController : ControllerBase
         return Ok(environment2D);
     }
 
-    [HttpPost(Name = "Create2Denvironment")]
+    [HttpPost(Name = "Create2Denvironment")]    
     [Authorize]
     public async Task<ActionResult> Add(Environment2D environment2D)
     {

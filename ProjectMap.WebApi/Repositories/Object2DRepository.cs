@@ -34,7 +34,7 @@ namespace ProjectMap.WebApi.Repositories
         {
             using (var sqlConnection = new SqlConnection(sqlConnectionString))
             {
-                return await sqlConnection.QueryAsync<Object2D>("SELECT * FROM [Object2D] WHERE environmentID = @environmentID", new { environmentID});
+                return await sqlConnection.QueryAsync<Object2D>("SELECT * FROM [Object2D] WHERE EnvironmentId = @EnvironmentID", new { environmentID});
             }
         }
         public async Task UpdateAsync(Object2D environment)
