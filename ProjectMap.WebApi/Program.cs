@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Identity.Client;
-using ProjectMap.WebApi.Interfaces;
 using ProjectMap.WebApi.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
