@@ -67,12 +67,9 @@ public class Environment2DController : ControllerBase
         {
             return BadRequest();
         }
-        if (environment2D.Name.Length < 25 && environment2D.Name != "")
-        {
-            var createdEnvironment2D = await _environment2DRepository.InsertAsync(environment2D);
-            return Created();
-        }
 
+        var createdEnvironment2D = await _environment2DRepository.InsertAsync(environment2D);
+        return Created();
 
     }
     [HttpPut("{environment2DId}", Name = "Update2DEnvironment")]
