@@ -59,6 +59,18 @@ public class Environment2DController : ControllerBase
         {
             return BadRequest("Can not have more than 5 worlds");
         }
+        if (environment2D.Name.Length > 25)
+        {
+            return BadRequest();
+        }
+        if (environment2D.Name == "")
+        {
+            return BadRequest();
+        }
+        if (environment2D.Name.Length < 25 && environment2D.Name != "")
+        {
+            return Created();
+        }
 
 
         var createdEnvironment2D = await _environment2DRepository.InsertAsync(environment2D);
