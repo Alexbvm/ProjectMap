@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
+using ProjectMap.WebApi.Interfaces;
 using ProjectMap.WebApi.Models;
 
 namespace ProjectMap.WebApi.Repositories

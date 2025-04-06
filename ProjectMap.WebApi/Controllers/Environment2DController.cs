@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
+using ProjectMap.WebApi.Interfaces;
 using ProjectMap.WebApi.Models;
-using ProjectMap.WebApi.Repositories;
 using System;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -59,7 +59,18 @@ public class Environment2DController : ControllerBase
         {
             return BadRequest("Can not have more than 5 worlds");
         }
-
+        if (environment2D.Name.Length > 25)
+        {
+            return BadRequest();
+        }
+        if (environment2D.Name == "")
+        {
+            return BadRequest();
+        }
+        if (environment2D.Name.Length < 25 && environment2D.Name != "")
+        {
+            return Created();
+        }
 
         var createdEnvironment2D = await _environment2DRepository.InsertAsync(environment2D);
         return Created();

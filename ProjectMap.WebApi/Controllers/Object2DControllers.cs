@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProjectMap.WebApi.Interfaces;
 using ProjectMap.WebApi.Models;
-using ProjectMap.WebApi.Repositories;
 using System.Diagnostics;
 namespace ProjectMap.WebApi.Controllers
 {

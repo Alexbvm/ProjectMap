@@ -1,6 +1,6 @@
 ﻿using ProjectMap.WebApi.Models;
 
-namespace ProjectMap.WebApi.Repositories
+namespace ProjectMap.WebApi.Interfaces
 {
     public interface IObject2DRepository
     {
